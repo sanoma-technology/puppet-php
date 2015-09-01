@@ -1702,6 +1702,14 @@ soap.wsdl_cache_ttl=<%= @soap_wsdl_cache_ttl %>
 ; A default size of the shared memory segment
 ;sysvshm.init_mem = 10000
 
+<% @custom_config.sort.each do |section, params| -%>
+[<%= section -%>]
+<% if params.is_a?(Hash) -%>
+<% params.sort.each do |name, value| -%>
+<%= name -%> = <%= value %>
+<% end -%>
+<% end -%>
+<% end -%>
 
 ; Local Variables:
 ; tab-width: 4
